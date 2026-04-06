@@ -1,8 +1,6 @@
 # Data-Science-Project_Marketing-Campaign-Analysis
 # Marketing Campaign Analysis with Python
 
-A GitHub-ready notebook-style document for exploratory data analysis, preprocessing, feature engineering, hypothesis testing, and business insights using the `marketing_data.csv` dataset.
-
 ***
 
 ## 1. Project Overview
