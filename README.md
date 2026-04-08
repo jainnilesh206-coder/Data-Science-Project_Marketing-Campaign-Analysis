@@ -667,8 +667,6 @@ This project used many small but important Python and pandas concepts.
 - IQR calculation
 - `.clip(lower=..., upper=...)`
 
-These are excellent beginner-to-intermediate data science techniques for GitHub portfolio projects.
-
 ***
 
 ## 19. Final Business Insights
@@ -682,7 +680,7 @@ These are excellent beginner-to-intermediate data science techniques for GitHub 
 
 ***
 
-## 20. Suggested Repository Structure
+## 20. Repository Structure
 
 ```text
 marketing-campaign-analysis/
