@@ -5,9 +5,9 @@
 
 ## 1. Project Overview
 
-This project analyzes a customer marketing campaign dataset to understand customer behavior, clean and prepare the data, engineer useful features, test business hypotheses, and extract actionable insights for campaign optimization.[1]
+This project analyzes a customer marketing campaign dataset to understand customer behavior, clean and prepare the data, engineer useful features, test business hypotheses, and extract actionable insights for campaign optimization.
 
-The workflow includes missing value treatment, categorical encoding, outlier detection, visualization, correlation analysis, product-level revenue analysis, and campaign response analysis.[1]
+The workflow includes missing value treatment, categorical encoding, outlier detection, visualization, correlation analysis, product-level revenue analysis, and campaign response analysis.
 
 ***
 
@@ -26,20 +26,20 @@ The project aims to answer these kinds of business questions:
 
 ## 3. Dataset Description
 
-The dataset contains 2240 rows and 28 columns, with customer demographics, purchase behavior, campaign responses, and complaint information.[1][1]
+The dataset contains 2240 rows and 28 columns, with customer demographics, purchase behavior, campaign responses, and complaint information.
 
 ### Main columns used
 
-- `Year_Birth`: birth year of customer.[1]
-- `Education`: education category.[1]
-- `Marital_Status`: marital category.[1]
-- `Income`: yearly household income, stored as text with currency symbols and commas.[1]
-- `Kidhome`, `Teenhome`: number of children/teens at home.[1]
-- `MntWines`, `MntFruits`, `MntMeatProducts`, `MntFishProducts`, `MntSweetProducts`, `MntGoldProds`: product spending columns.[1]
-- `NumWebPurchases`, `NumCatalogPurchases`, `NumStorePurchases`: channel-wise purchase counts.[1]
-- `Response`: whether the customer accepted the last campaign.[1]
-- `Complain`: whether the customer lodged a complaint in the last two years.[1]
-- `Country`: customer country.[1]
+- `Year_Birth`: birth year of customer.
+- `Education`: education category.
+- `Marital_Status`: marital category.
+- `Income`: yearly household income, stored as text with currency symbols and commas.
+- `Kidhome`, `Teenhome`: number of children/teens at home.
+- `MntWines`, `MntFruits`, `MntMeatProducts`, `MntFishProducts`, `MntSweetProducts`, `MntGoldProds`: product spending columns.
+- `NumWebPurchases`, `NumCatalogPurchases`, `NumStorePurchases`: channel-wise purchase counts.
+- `Response`: whether the customer accepted the last campaign.
+- `Complain`: whether the customer lodged a complaint in the last two years.
+- `Country`: customer country.
 
 ***
 
@@ -108,7 +108,7 @@ marketing_data['Marital_Status'].value_counts()
 marketing_data['Country'].value_counts()
 ```
 
-This project identified that `Education`, `Marital_Status`, and `Country` are the main categorical columns, while `Income` initially appeared as an object because of currency formatting.[1][2]
+This project identified that `Education`, `Marital_Status`, and `Country` are the main categorical columns, while `Income` initially appeared as an object because of currency formatting.
 
 ***
 
@@ -116,7 +116,7 @@ This project identified that `Education`, `Marital_Status`, and `Country` are th
 
 ### Problem
 
-The `Income` column had 24 missing values.[1]
+The `Income` column had 24 missing values.
 
 ### Cleaning steps before imputation
 
@@ -169,7 +169,7 @@ marketing_data['Income_imputed'] = marketing_data.apply(fill_income, axis=1)
 marketing_data['Income_imputed'].isna().sum()
 ```
 
-After imputation, `Income_imputed` had 0 missing values.[4]
+After imputation, `Income_imputed` had 0 missing values.
 
 ***
 
@@ -190,7 +190,7 @@ reference_year = 2014
 marketing_data['Age'] = reference_year - marketing_data['Year_Birth']
 ```
 
-A 2014 reference year was used because customer dates in the dataset are centered around 2014.[1]
+A 2014 reference year was used because customer dates in the dataset are centered around 2014.
 
 ### 8.3 Total spending
 
@@ -229,7 +229,7 @@ marketing_data['Total_Purchases'] = (
 
 ### Why outliers were checked
 
-Boxplots and histograms help detect skewness, spread, and extreme values. For example, `Income_clean` had a maximum value of 666666, far above the upper quartiles, indicating strong right-skew and potential outliers.[5][6]
+Boxplots and histograms help detect skewness, spread, and extreme values. For example, `Income_clean` had a maximum value of 666666, far above the upper quartiles, indicating strong right-skew and potential outliers.
 
 ### Histogram code
 
@@ -282,7 +282,7 @@ for col in num_cols:
     marketing_data_capped[col] = marketing_data_capped[col].clip(lower=lower, upper=upper)
 ```
 
-Note: imputation did not remove outliers; it only filled missing income values.[4][6]
+Note: imputation did not remove outliers; it only filled missing income values.
 
 ***
 
@@ -318,7 +318,7 @@ marketing_data_encoded = pd.get_dummies(
 )
 ```
 
-Education had 5 categories, marital status had 6 cleaned categories, and country had 8 categories in the working dataset.[7]
+Education had 5 categories, marital status had 6 cleaned categories, and country had 8 categories in the working dataset.
 
 ***
 
@@ -355,7 +355,7 @@ plt.tight_layout()
 plt.show()
 ```
 
-A 16×16 correlation matrix was generated for the chosen variables.[8]
+A 16×16 correlation matrix was generated for the chosen variables.
 
 ***
 
@@ -375,7 +375,7 @@ age_group_stats = marketing_data.groupby('Age_group')[['Total_Store','Total_Onli
 print(age_group_stats)
 ```
 
-Older customers had higher average store purchases (6.22 vs 5.33), but they also had higher online purchases (7.48 vs 5.97), so the hypothesis was only partially supported.[9]
+Older customers had higher average store purchases (6.22 vs 5.33), but they also had higher online purchases (7.48 vs 5.97), so the hypothesis was only partially supported.
 
 ### Hypothesis B
 
@@ -415,7 +415,7 @@ print(row_stats)
 print(country_stats)
 ```
 
-US customers averaged about 13.51 purchases compared with 12.49 for the rest of the world, so the US performed slightly better, though it was not the highest country overall because ME had a higher mean with a very small sample size.[9]
+US customers averaged about 13.51 purchases compared with 12.49 for the rest of the world, so the US performed slightly better, though it was not the highest country overall because ME had a higher mean with a very small sample size.
 
 ***
 
@@ -451,7 +451,7 @@ plt.tight_layout()
 plt.show()
 ```
 
-Wines generated the highest total spending at 680816, followed by meat products at 373968, while fruits generated the lowest at 58917.[10]
+Wines generated the highest total spending at 680816, followed by meat products at 373968, while fruits generated the lowest at 58917.
 
 ***
 
@@ -503,7 +503,7 @@ plt.show()
 print(marketing_data['Age'].corr(marketing_data['Response']))
 ```
 
-The age-to-response correlation was about -0.02, which is very close to zero, indicating no strong relationship between age and last-campaign acceptance.[11]
+The age-to-response correlation was about -0.02, which is very close to zero, indicating no strong relationship between age and last-campaign acceptance.
 
 ***
 
@@ -530,7 +530,7 @@ plt.tight_layout()
 plt.show()
 ```
 
-SP had the highest number of customers accepting the last campaign at 176, followed by SA at 52 and CA at 38.[12]
+SP had the highest number of customers accepting the last campaign at 176, followed by SA at 52 and CA at 38.
 
 ***
 
@@ -671,12 +671,12 @@ This project used many small but important Python and pandas concepts.
 
 ## 19. Final Business Insights
 
-- The dataset required income cleaning because the `Income` field was stored as text with symbols and commas.[1]
-- Income missing values were imputed using average income by education and marital-status groups, reducing missing values in the final income feature to zero.[4]
-- Wines and meat products were the strongest revenue contributors, while fruits produced the lowest revenue.[10]
-- Age showed almost no linear relationship with response to the last marketing campaign.[11]
-- SP had the highest number of customers who accepted the last campaign.[12]
-- Store and online channels were positively correlated, which did not support a cannibalization narrative.[9]
+- The dataset required income cleaning because the `Income` field was stored as text with symbols and commas.
+- Income missing values were imputed using average income by education and marital-status groups, reducing missing values in the final income feature to zero.
+- Wines and meat products were the strongest revenue contributors, while fruits produced the lowest revenue.
+- Age showed almost no linear relationship with response to the last marketing campaign.
+- SP had the highest number of customers who accepted the last campaign.
+- Store and online channels were positively correlated, which did not support a cannibalization narrative.
 
 ***
 
